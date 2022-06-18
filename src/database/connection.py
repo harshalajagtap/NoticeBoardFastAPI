@@ -8,6 +8,7 @@ engine = create_engine("postgresql://postgres:12345678@localhost/fastapi")
 
 # session creation
 session_local = sessionmaker(autoflush=False, autocommit=False)
+""":type: sqlalchemy.orm.Session"""
 
 # configure above session
 session_local.configure(bind=engine)
