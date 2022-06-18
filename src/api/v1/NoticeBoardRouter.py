@@ -1,17 +1,18 @@
 from fastapi import APIRouter
-
+from src.database.schema import NoticePost
 
 nb_router = APIRouter()
 
 
 @nb_router.get("/notice")
-def get_notice(rdate):
-    return {"date": rdate, "notice": "This is first notice"}
+def get_notice(nid: int = None):
+    return {"noticeid": nid}
 
 
 @nb_router.post("/notice")
-def add_notice(rdate,applicable_for, title, notice):
-    return {"date": rdate, "applicable_for": applicable_for, "title": title, "notice":notice }
+def add_notice(req: NoticePost):
+    return req
+
 
 @nb_router.put("/notice")
 def add_notice(notice_id, rdate, applicable_for, title, notice):
